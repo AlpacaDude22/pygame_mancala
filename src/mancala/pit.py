@@ -1,11 +1,9 @@
 import pygame
 
 class Pit:
-
-    RADIUS = 50
-    COLOR = (0, 0, 0)
+    COLOR = (50, 50, 50)
 
 
-    def __init__(self, window, pos_x, pos_y):
+    def __init__(self, window, pos_x, pos_y, radius):
         self.window = window
-        pygame.draw.circle(window, self.COLOR, (pos_x, pos_y), self.RADIUS)
+        pygame.draw.circle(window, self.COLOR, (pos_x, pos_y), radius)

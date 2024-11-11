@@ -7,22 +7,24 @@ from mancala import pit
 
 pygame.init()
 
-WINDOW_W, WINDOW_H = 1000, 800
+WINDOW_W, WINDOW_H = 650, 200
 WHITE = (255, 255, 255)
-PIT_SPACING = 110
-PITS_START_LOC = 200
+PIT_SPACING = 10
+PIT_RADIUS = 50
 
 window = pygame.display.set_mode((WINDOW_W, WINDOW_H))
 pygame.display.set_caption("LAN Mancala")
 
 window.fill(WHITE)
 
-#Draw top
-_pit_spacing = PITS_START_LOC
+#Draw Pits
+_pit_spacing = 0
 for pit_count in range(0, 6):
 
-    pit.Pit(window, _pit_spacing, 100)
-    _pit_spacing = _pit_spacing + PIT_SPACING
+    pit.Pit(window, _pit_spacing, PIT_RADIUS , PIT_RADIUS)
+    pit.Pit(window, _pit_spacing, (PIT_RADIUS * 2) + PIT_SPACING, PIT_RADIUS)
+    _pit_spacing = _pit_spacing + (PIT_RADIUS * 2) + PIT_SPACING
+
 
 
 
