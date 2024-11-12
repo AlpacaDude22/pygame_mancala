@@ -1,7 +1,7 @@
 import pygame
 
 class Pit:
-    COLOR = (50, 50, 50)
+    COLOR = (191, 171, 119)
 
 
     def __init__(self, window, pos_x, pos_y, radius):
