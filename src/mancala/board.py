@@ -4,9 +4,9 @@ from . import pit
 
 class Board:
     BROWN_BOARD = (255, 225, 150)
-    SOWING_DELAY = 0.5
+    SOWING_DELAY = 0.05
     pit_list = []
-    #seed_sound = pygame.mixer.Sound("\media\plop-fancade.mp3")
+    
 
     
     def __init__(self, window, pos_x, pos_y, scale, columns): #TODO:make columns and pit_spacing optional with default being 6
@@ -17,6 +17,7 @@ class Board:
         self.pit_radius = scale * 5
         self.pit_spacing = scale * 1
         self.columns = columns
+        self.seed_sound = pygame.mixer.Sound("media\plop-fancade.mp3")
 
     def draw_board(self):
         ANIMATE_TIME_STEP = 0.25
@@ -77,15 +78,16 @@ class Board:
     def fill_board(self, seeds_per_pit, animation):
         _bank_1 = 0
         _bank_2 = self.columns + 1
+        for i in range(0, seeds_per_pit):
+            for index, Pit in enumerate(self.pit_list):
+                if index == _bank_1 or index == _bank_2:
+                    continue
+                if animation:
+                    pygame.display.flip()   
+                    time.sleep(self.SOWING_DELAY)
+                    self.seed_sound.play()
 
-        for index, Pit in enumerate(self.pit_list):
-            if index == _bank_1 or index == _bank_2:
-                continue
-            if animation:
-                pygame.display.flip()   
-                time.sleep(self.SOWING_DELAY)
-            
-            Pit.add_seed()
+                Pit.add_seed()
 
   
 
